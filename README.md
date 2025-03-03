@@ -23,3 +23,32 @@ O fluxo do pipeline é executado da seguinte forma:
 
 ## Estrutura do Projeto
 
+data-pipeline/ ├── airflow/ # Configurações e logs do Airflow ├── dags/ # Definição do DAG do Airflow ├── spark/ # Dockerfile e configurações para o ambiente Spark/PySpark ├── scripts/ # Scripts em PySpark para processamento (ETL) └── data/ ├── raw # Dados brutos (Raw) ├── trusted # Dados processados e limpos (Trusted) └── analytic # Dados prontos para análise (Analytic)
+
+
+## Como Utilizar
+
+1. **Clonar o repositório:**
+   ```bash
+   git clone https://github.com/seu-usuario/data-pipeline.git
+   cd data-pipeline
+2. **Iniciar o ambiente, (dado que o docker compose está instalado devidamente):**
+   ```bash
+   docker-compose up -d
+3. **Acessar o Airflow:**
+Abra o navegador e acesse http://localhost:8080. Localize o DAG pipeline_de_dados, ative-o e execute-o para disparar o pipeline.
+
+4. **Verificar os resultados:**
+- Confira a pasta data/raw para os dados brutos.
+- Confira a pasta data/trusted para os dados limpos.
+- Confira a pasta data/analytic para os dados agregados prontos para análise.
+
+## Personalização:
+
+- Airflow DAG: Personalize o fluxo de trabalho ajustando o DAG em dags/pipeline_de_dados.py.
+- PySpark Scripts: Amplie ou ajuste as transformações nos scripts dentro da pasta scripts/.
+- Docker e Ambiente Spark: Modifique as configurações do Docker Compose e do Dockerfile em spark/ conforme suas necessidades.
+
+## Logs para checar erros:
+```bash
+docker-compose logs -f airflow
