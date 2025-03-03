@@ -3,8 +3,8 @@ from pyspark.sql import SparkSession
 spark = SparkSession.builder.appName("ProcessRawToTrusted").getOrCreate()
 
 # Exemplo: lendo um csv na camada RAW
-df = spark.read.csv("/app/data/raw/data_original.csv", header=True, inferSchema=True)
-
+df = spark.read.options(header=True, inferSchema=True, delimiter=",").csv("/app/data/raw/data_original.csv", header=True, inferSchema=True)
+df.printSchema()
 # Realizar transformações simples: Remoção de nulos por exemplo
 df_trusted = df.dropna()
 
