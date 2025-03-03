@@ -12,9 +12,10 @@ Este repositório apresenta um ambiente containerizado para um pipeline de dados
 
 O ambiente é composto por diversos containers orquestrados com Docker Compose:
 
-- **Airflow:** Gerencia e agenda o pipeline por meio de um DAG (definido em `dags/pipeline_dados.py`), executando tarefas de ingestão e processamento dos dados.
-- **Spark Cluster:** Composto por um Spark Master e um ou mais Spark Workers, responsáveis por executar os jobs em PySpark.
-- **PySpark Job Container:** Container customizado (configurado via `spark/Dockerfile`) para rodar scripts de transformação de dados.
+- ![Airflow](https://img.shields.io/badge/Apache%20Airflow-017CEE?style=for-the-badge&logo=apache-airflow&logoColor=white) **Airflow:** Gerencia e agenda o pipeline por meio de um DAG (definido em `dags/pipeline_dados.py`), executando tarefas de ingestão e processamento dos dados.
+- ![Spark](https://img.shields.io/badge/Apache%20Spark-E25A1C?style=for-the-badge&logo=apache-spark&logoColor=white) **Spark Cluster:** Composto por um Spark Master e um ou mais Spark Workers, responsáveis por executar os jobs em PySpark.
+- ![PySpark](https://img.shields.io/badge/PySpark-ED8B00?style=for-the-badge) **PySpark Job Container:** Container customizado (configurado via `spark/Dockerfile`) para rodar scripts de transformação de dados.
+
 
 O fluxo do pipeline é executado da seguinte forma:
 1. **Ingestão:** Os dados brutos são copiados para a camada *Raw*.
